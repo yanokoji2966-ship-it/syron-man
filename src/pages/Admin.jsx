@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Package, Check, X, RefreshCw, Plus, Edit, Trash2, LayoutGrid, List, Menu } from 'lucide-react';
 import { orderService } from '../services/orderService';
 import { productService } from '../services/productService';
@@ -81,16 +81,6 @@ const Admin = ({ onNavigate }) => {
     // Estado para formulário de produto
     const [isProductModalOpen, setIsProductModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
-
-    const handleOpenAddProduct = () => {
-        setEditingProduct(null);
-        setIsProductModalOpen(true);
-    };
-
-    const handleEditProduct = (product) => {
-        setEditingProduct(product);
-        setIsProductModalOpen(true);
-    };
 
     const handleOpenBatchCreator = () => {
         setIsBatchModalOpen(true);
