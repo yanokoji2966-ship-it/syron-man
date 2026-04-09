@@ -1,0 +1,102 @@
+.not-found-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+}
+
+.not-found-container {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 60px 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.error-icon-wrapper {
+    margin-bottom: 24px;
+    display: inline-flex;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.premium-error-badge {
+    color: var(--primary-gold);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.error-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    margin: 10px 0 20px;
+    letter-spacing: -1px;
+}
+
+.error-message {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.not-found-suggestions {
+    margin-bottom: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.not-found-suggestions p {
+    font-size: 14px;
+    margin-bottom: 20px !important;
+    color: white !important;
+    opacity: 0.8;
+}
+
+.suggest-btn {
+    background: transparent;
+    border: 1px solid var(--primary-gold);
+    color: var(--primary-gold);
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.suggest-btn:hover {
+    background: var(--primary-gold);
+    color: var(--bg-black);
+}
+
+.back-home-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.back-home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+}

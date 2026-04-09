@@ -1,0 +1,281 @@
+[
+  {
+    "id": "16ce3e02-321b-43d5-ab06-9e7ef6ecbc56",
+    "key": "whatsapp_number",
+    "value": "5589981194628",
+    "created_at": "2026-02-27T17:07:38.51886",
+    "updated_at": "2026-02-27T17:07:38.51886",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "eb71284d-a48e-4b06-a770-4239b8c1431f",
+    "key": "promo_banner_active",
+    "value": "false",
+    "created_at": "2026-02-27T17:40:43.142747",
+    "updated_at": "2026-02-27T17:40:43.142747",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "d19b3b25-6ecd-4193-ae0b-0a8ee53e263b",
+    "key": "promo_banner_text",
+    "value": "🔥 FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 299!",
+    "created_at": "2026-02-27T17:40:43.142747",
+    "updated_at": "2026-02-27T17:40:43.142747",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "c11af671-3580-4834-a922-5cbaf7fff1a6",
+    "key": "payment_link",
+    "value": "",
+    "created_at": "2026-02-28T13:17:32.320787",
+    "updated_at": "2026-02-28T13:17:32.320787",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "96a0c963-79dc-441a-bc9e-b18a6ad4f405",
+    "key": "hero_carousel_images",
+    "value": "[\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/c28f54h0lxa-1772299398782.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/risnuv07eif-1772299799226.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/bw670uix7a-1772299806889.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/6l2q32ubsgu-1772299819941.png\"]",
+    "created_at": "2026-02-28T17:23:20.066895",
+    "updated_at": "2026-02-28T17:30:21.098881",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "5230a70b-671b-42f8-bc41-0b9ff1030cda",
+    "key": "store_logo_url",
+    "value": "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/r9006lhl53d-1772307757969.png",
+    "created_at": "2026-02-28T18:16:56.288823",
+    "updated_at": "2026-02-28T19:42:39.322489",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "12a200fd-b1bc-49f2-a10b-1c0a8e821bb7",
+    "key": "theme_background",
+    "value": "#050a14",
+    "created_at": "2026-03-01T00:21:56.781473",
+    "updated_at": "2026-03-01T00:21:56.781473",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "903ef678-5efc-4e11-bf29-dafdf93b8e1e",
+    "key": "theme_button_style",
+    "value": "solid",
+    "created_at": "2026-03-01T00:21:56.781634",
+    "updated_at": "2026-03-01T00:21:56.781634",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "4080d510-ac20-4451-9a18-7ebb1d785990",
+    "key": "theme_radius",
+    "value": "8px",
+    "created_at": "2026-03-01T00:21:56.7894",
+    "updated_at": "2026-03-01T00:21:56.7894",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "d8346a1d-a15f-4364-b11f-12cfe756d885",
+    "key": "theme_font_family",
+    "value": "sans-serif",
+    "created_at": "2026-03-01T00:21:56.782087",
+    "updated_at": "2026-03-01T00:21:56.782087",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "1f5b0475-14d9-4e3a-958f-c962660a21e5",
+    "key": "theme_glass_intensity",
+    "value": "0.8",
+    "created_at": "2026-03-01T00:21:56.794128",
+    "updated_at": "2026-03-01T00:21:56.794128",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "c7b7fe1b-2727-4dbe-b2a9-69fdece19d90",
+    "key": "theme_secondary",
+    "value": "#3b82f6",
+    "created_at": "2026-03-01T00:21:56.780444",
+    "updated_at": "2026-03-01T00:21:56.780444",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "d0f18bd5-81ab-406e-8130-ed9d7e56bd4a",
+    "key": "theme_header_type",
+    "value": "fixed",
+    "created_at": "2026-03-01T00:21:56.789501",
+    "updated_at": "2026-03-01T00:21:56.789501",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "b3303bf5-3a33-4018-b3a1-99f9943bf377",
+    "key": "theme_primary",
+    "value": "#ffcc00",
+    "created_at": "2026-03-01T00:21:56.782182",
+    "updated_at": "2026-03-01T00:21:56.782182",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "6b3e1b12-927a-47a6-aca4-7f300639c36f",
+    "key": "nexus_layout",
+    "value": "banner_large",
+    "created_at": "2026-03-06T03:19:55.878128",
+    "updated_at": "2026-03-06T03:31:38.02663",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "285a4e98-1e9d-4c8b-a5a7-8d6a092c6390",
+    "key": "nexus_banner",
+    "value": "{\"image\":\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/cxwfrqtae2k-1772767920428.png\",\"title\":\"Elegância em cada detalhe\",\"subtitle\":\"Descubra a nova coleção\",\"buttonText\":\"Ver coleção\",\"buttonLink\":\"/colecao\",\"images\":[\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/cxwfrqtae2k-1772767920428.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/gnm7njdcfaf-1772768468293.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/sgao75tzb2b-1772768500999.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/yxdxhlutm48-1772768514968.png\"]}",
+    "created_at": "2026-03-06T03:32:14.578635",
+    "updated_at": "2026-03-06T03:41:59.619218",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "c27f6394-93aa-4eb2-b300-c50228d69b20",
+    "key": "nexus_branding",
+    "value": "{\"name\":\"SYRON MAN\",\"phrase\":\"O estilo mora nos detalhes\"}",
+    "created_at": "2026-03-06T03:40:11.649709",
+    "updated_at": "2026-03-06T03:42:37.832383",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "bfc04f80-5647-43ff-8e01-6fb0fdda7d18",
+    "key": "nexus_typography",
+    "value": "{\"titleSize\":72,\"subtitleSize\":20,\"fontFamily\":\"'Cinzel', serif\"}",
+    "created_at": "2026-03-06T12:19:56.949025",
+    "updated_at": "2026-03-06T12:19:56.949025",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "9783d136-4497-4450-a2ad-4c81477a0e4f",
+    "key": "ai_stock_analysis_days",
+    "value": "30",
+    "created_at": "2026-03-06T12:48:24.634242",
+    "updated_at": "2026-03-06T12:48:24.634242",
+    "description": "Quantidade de dias sem vendas para considerar produto parado",
+    "active": true
+  },
+  {
+    "id": "e546beb4-13fb-40f0-8208-284a5ecb3d62",
+    "key": "ai_low_sales_threshold",
+    "value": "5",
+    "created_at": "2026-03-06T12:48:24.634242",
+    "updated_at": "2026-03-06T12:48:24.634242",
+    "description": "Limite de vendas para considerar baixa performance",
+    "active": true
+  },
+  {
+    "id": "cba82b33-5b9f-4824-b7d2-1888266a1f54",
+    "key": "ai_high_stock_threshold",
+    "value": "20",
+    "created_at": "2026-03-06T12:48:24.634242",
+    "updated_at": "2026-03-06T12:48:24.634242",
+    "description": "Limite para considerar estoque alto",
+    "active": true
+  },
+  {
+    "id": "fb36a5ce-223b-4fee-b095-f3e6e291f983",
+    "key": "ai_auto_promotion_enabled",
+    "value": "false",
+    "created_at": "2026-03-06T12:48:24.634242",
+    "updated_at": "2026-03-06T12:48:24.634242",
+    "description": "Ativar sugestões automáticas de promoção",
+    "active": true
+  },
+  {
+    "id": "f4a74fd8-1dd2-4683-8af6-1bda7bc64c87",
+    "key": "ai_vip_customer_threshold",
+    "value": "1000",
+    "created_at": "2026-03-06T12:48:24.634242",
+    "updated_at": "2026-03-06T12:48:24.634242",
+    "description": "Valor total gasto para ser considerado cliente VIP",
+    "active": true
+  },
+  {
+    "id": "a567644a-6951-4b5d-aad3-2710644b56eb",
+    "key": "ai_inactive_customer_days",
+    "value": "60",
+    "created_at": "2026-03-06T12:48:24.634242",
+    "updated_at": "2026-03-06T12:48:24.634242",
+    "description": "Dias de inatividade para considerar cliente inativo",
+    "active": true
+  },
+  {
+    "id": "883cf3bf-69aa-4734-86c0-ae649396dc4d",
+    "key": "monthly_goal",
+    "value": "10000",
+    "created_at": "2026-03-02T02:21:44.09883",
+    "updated_at": "2026-03-03T13:46:03.953043",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "b31fef5a-4d9d-42e8-ad2a-c2b6025a059d",
+    "key": "dynamic_shipping_enabled",
+    "value": "false",
+    "created_at": "2026-03-03T00:55:23.51677",
+    "updated_at": "2026-03-03T13:53:54.432083",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "8df875a9-c594-45f3-af8a-ecb4e6010a3c",
+    "key": "fixed_shipping_value",
+    "value": "0",
+    "created_at": "2026-03-03T00:55:38.381702",
+    "updated_at": "2026-03-03T17:13:03.679135",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "549633f1-8ce2-46ec-8506-c5f0811e7b8b",
+    "key": "local_shipping_value",
+    "value": "1",
+    "created_at": "2026-03-03T01:13:29.148605",
+    "updated_at": "2026-03-03T17:13:04.771",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "9b726f84-b4ca-4a6c-abec-317dcc2eed14",
+    "key": "free_shipping_threshold",
+    "value": "200",
+    "created_at": "2026-03-03T01:13:30.179026",
+    "updated_at": "2026-03-03T17:13:06.010092",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "73c33e4f-bd21-4150-8208-1f80d1eb3337",
+    "key": "store_name",
+    "value": "SYRON MAN",
+    "created_at": "2026-03-03T21:19:05.294939",
+    "updated_at": "2026-03-03T21:22:45.09737",
+    "description": null,
+    "active": true
+  },
+  {
+    "id": "0205aa70-0381-44b6-8868-f43a0bb83f0b",
+    "key": "exclusive_city",
+    "value": "São Raimundo Nonato - PI",
+    "created_at": "2026-03-03T21:19:05.319194",
+    "updated_at": "2026-03-03T21:22:45.094462",
+    "description": null,
+    "active": true
+  }
+]

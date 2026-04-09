@@ -1,0 +1,367 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 94px;
+    /* Increased to accommodate info-bar */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-bar {
+    width: 100%;
+    background: linear-gradient(135deg, #000000 0%, #001A33 100%);
+    border-bottom: 1px solid var(--primary);
+    color: white;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.style-text {
+    font-family: 'serif';
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--primary);
+    margin-bottom: -4px;
+    letter-spacing: 1px;
+}
+
+.man-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.header-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cart-btn .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: var(--secondary);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    height: 18px;
+    min-width: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-btn {
+    background: transparent;
+}
+
+.admin-btn {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.admin-btn:hover {
+    filter: brightness(1.2);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Search Active State */
+.search-active-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    height: 48px;
+    margin: 0 auto;
+    border-radius: 24px;
+    padding: 0 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 12px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-submit-btn,
+.close-search {
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.search-submit-btn:hover,
+.close-search:hover {
+    background: rgba(0, 51, 102, 0.1);
+}
+
+.close-search {
+    margin-left: 4px;
+}
+
+/* Butterflies Animation */
+.header-container {
+    position: relative;
+}
+
+.butterfly {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.butterfly .wing {
+    transform-origin: center;
+    animation: flap 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes flap {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0.1);
+    }
+}
+
+/* Butterfly 1 - Random Loop */
+.bf-1 {
+    animation: fly-random-1 15s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(0, 51, 102, 0.4));
+}
+
+.bf-1 path.wing {
+    fill: var(--accent);
+}
+
+/* Rosa suave */
+
+@keyframes fly-random-1 {
+    0% {
+        left: -50px;
+        top: 10px;
+        transform: rotate(45deg);
+    }
+
+    25% {
+        left: 40%;
+        top: 40px;
+        transform: rotate(110deg);
+    }
+
+    50% {
+        left: 80%;
+        top: 5px;
+        transform: rotate(190deg);
+    }
+
+    75% {
+        left: 20%;
+        top: 35px;
+        transform: rotate(280deg);
+    }
+
+    100% {
+        left: 110%;
+        top: 15px;
+        transform: rotate(360deg);
+    }
+}
+
+/* Butterfly 2 - Fast Path */
+.bf-2 {
+    animation: fly-random-2 10s linear infinite reverse;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
+}
+
+.bf-2 path.wing {
+    fill: #ffd700;
+}
+
+/* Dourado */
+
+@keyframes fly-random-2 {
+    0% {
+        right: -50px;
+        top: 5px;
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        right: 60%;
+        top: 55px;
+        transform: rotate(-170deg);
+    }
+
+    100% {
+        right: 110%;
+        top: 25px;
+        transform: rotate(-350deg);
+    }
+}
+
+/* Landing Butterfly - The one that lands on 'B' */
+.bf-landing {
+    animation: fly-and-land 12s ease-in-out forwards;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+    width: 24px;
+    height: 24px;
+}
+
+.bf-landing path.wing {
+    fill: var(--primary);
+}
+
+/* Rosa Pink */
+
+@keyframes fly-and-land {
+    0% {
+        opacity: 0;
+        left: -100px;
+        top: 80px;
+        transform: rotate(60deg) scale(1);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    40% {
+        left: 30%;
+        top: -10px;
+        transform: rotate(140deg) scale(1.1);
+    }
+
+    75% {
+        left: 60%;
+        top: 50px;
+        transform: rotate(45deg) scale(1.3);
+    }
+
+    100% {
+        left: calc(50% - 138px);
+        /* Posição do 'B' no desktop */
+        top: 25px;
+        transform: rotate(-10deg) scale(0.7);
+    }
+}
+
+/* Mobile adjustment for landing position */
+@media (max-width: 900px) {
+    @keyframes fly-and-land {
+        0% {
+            opacity: 0;
+            left: -50px;
+            top: 50px;
+            transform: rotate(60deg) scale(1);
+        }
+
+        100% {
+            left: calc(50% - 38px);
+            /* Centralizado acima do 'B' no mobile */
+            top: 24px;
+            transform: rotate(-10deg) scale(0.65);
+        }
+    }
+}

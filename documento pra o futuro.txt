@@ -1,0 +1,203 @@
+Não quero implementar IA agora, mas o sistema deve ficar totalmente preparado
+ para integração futura de um agente de IA, tanto para análise administrativa 
+ quanto para assistência de vendas.
+
+Abaixo estão os requisitos obrigatórios:
+
+1️⃣ Estrutura de Banco de Dados Completa
+
+Produtos
+
+id
+
+nome
+
+categoria
+
+descrição
+
+preco_venda
+
+custo_produto
+
+estoque_atual
+
+total_vendido
+
+data_criacao
+
+status
+
+Pedidos
+
+id
+
+cliente_id
+
+valor_total
+
+valor_frete
+
+desconto
+
+lucro_estimado
+
+forma_pagamento
+
+status
+
+data_criacao
+
+data_pagamento
+
+Itens do Pedido
+
+pedido_id
+
+produto_id
+
+quantidade
+
+valor_unitario
+
+custo_unitario
+
+Clientes
+
+id
+
+nome
+
+email
+
+telefone
+
+total_gasto
+
+total_pedidos
+
+ticket_medio
+
+data_ultima_compra
+
+status_cliente (novo, ativo, vip, inativo)
+
+2️⃣ 🔔 ATUALIZAÇÃO AUTOMÁTICA QUANDO O PAGAMENTO FOR APROVADO
+
+O sistema deve ter um processo automático (webhook ou verificação de pagamento)
+ que, no exato momento em que o pagamento for aprovado, execute:
+
+Alterar o status do pedido para “Pago”
+
+Registrar a data e hora do pagamento
+
+Dar baixa automática no estoque dos produtos comprados
+
+Atualizar o campo total_vendido de cada produto
+
+Atualizar os dados do cliente:
+
+total_gasto
+
+total_pedidos
+
+ticket_medio
+
+data_ultima_compra
+
+Calcular e salvar o lucro_estimado do pedido
+
+Essas atualizações devem ser feitas em tempo real para que os relatórios 
+administrativos já reflitam a venda imediatamente.
+
+3️⃣ Dados Prontos Para Relatórios (Sem depender de IA)
+
+Após a confirmação do pagamento, o sistema já deve alimentar automaticamente:
+
+Faturamento do dia
+
+Faturamento do mês
+
+Total de pedidos pagos
+
+Produtos mais vendidos
+
+Categorias mais vendidas
+
+Lucro diário e mensal
+
+Atualização de clientes VIP
+
+Ou seja, os relatórios do dashboard devem ser atualizados assim que o pagamento for confirmado.
+
+4️⃣ Armazenamento de Histórico
+
+Criar tabelas de histórico para:
+
+Mudanças de status do pedido
+
+Alterações de preço de produtos
+
+Movimentações de estoque
+
+Logs de ações administrativas
+
+5️⃣ Métricas Calculadas Periodicamente
+
+O sistema deve manter cálculos automáticos de:
+
+Ticket médio geral
+
+Taxa de cancelamento
+
+Produto mais vendido por período
+
+Categoria com maior faturamento
+
+Lucro por período
+
+Essas métricas devem ficar salvas para leitura futura por IA.
+
+6️⃣ Estrutura de Permissões
+
+Criar níveis de acesso:
+
+Super Admin
+
+Admin
+
+Funcionário
+
+Controlar quem pode visualizar:
+
+Lucro
+
+Relatórios financeiros
+
+Dados completos de clientes
+
+7️⃣ Log de Eventos do Sistema
+
+Registrar:
+
+Alterações de preços
+
+Cancelamentos
+
+Mudanças manuais de status
+
+Ajustes manuais de estoque
+
+8️⃣ Espaço Reservado Para IA no Dashboard
+
+Criar uma área desativada chamada:
+
+“Assistente Inteligente (Em breve)”
+
+Essa área será usada futuramente por um agente de IA que poderá analisar os dados do negócio.
+
+🎯 OBJETIVO FINAL
+
+Garantir que o sistema já produza dados organizados, históricos e atualizados em tempo real,
+ permitindo que uma IA futura consiga analisar vendas, clientes,
+  produtos e lucros sem necessidade de refazer a estrutura.

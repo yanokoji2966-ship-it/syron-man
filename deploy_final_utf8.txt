@@ -1,0 +1,179 @@
+﻿node.exe : Retrieving 
+projectÔÇª
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Retri  
+  eving projectÔÇª:String   
+ ) [], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+Deploying otacilios-projects
+-47eeaa6d/style-man
+Uploading 
+[--------------------] 
+(0.0B/5.8KB)
+Uploading 
+[==============------] 
+(4.1KB/5.8KB)
+Uploading 
+[====================] 
+(5.8KB/5.8KB)
+Inspect: https://vercel.com/
+otacilios-projects-47eeaa6d/
+style-man/ArofMKofZL7mvAp7bg
+2k4s4B6S6y [3s]
+Production: https://style-8y
+ijejqwf-otacilios-projects-4
+7eeaa6d.vercel.app [3s]
+Building...
+Building...
+Building: Running build in 
+Washington, D.C., USA 
+(East) ÔÇô iad1
+Building: Build machine 
+configuration: 2 cores, 8 GB
+Building: Retrieving list 
+of deployment files...
+Building: Downloading 174 
+deployment files...
+Building: Restored build 
+cache from previous 
+deployment (3Kce9oWqr7Vni6qy
+gQXxYHjHojQh)
+Building: Running "vercel 
+build"
+Building: Vercel CLI 50.38.2
+Building: Installing 
+dependencies...
+Building: up to date in 
+836ms
+Building: 65 packages are 
+looking for funding
+Building: run `npm fund` 
+for details
+Building: Running "npm run 
+build"
+Building: > style-man@0.0.0 
+build
+Building: > vite build
+Building: vite v7.3.1 
+building client environment 
+for production...
+Building: transforming...
+Building: Ô£ô 2887 modules 
+transformed.
+Building: rendering 
+chunks...
+Building: [plugin 
+vite:reporter]
+Building: (!) /vercel/path0/
+src/supabaseClient.js is 
+dynamically imported by /ver
+cel/path0/src/pages/Admin.js
+x but also statically 
+imported by 
+/vercel/path0/src/App.jsx, /
+vercel/path0/src/components/
+admin/AdminHealth.jsx, /verc
+el/path0/src/components/admi
+n/AdminTeam.jsx, /vercel/pat
+h0/src/components/admin/Styl
+esManagement.jsx, /vercel/pa
+th0/src/context/AuthContext.
+jsx, /vercel/path0/src/pages
+/Cart.jsx, /vercel/path0/src
+/pages/OrderPending.jsx, /ve
+rcel/path0/src/pages/Product
+Detail.jsx, /vercel/path0/sr
+c/pages/Profile.jsx, /vercel
+/path0/src/pages/StyleAdviso
+r.jsx, /vercel/path0/src/ser
+vices/adminService.js, /verc
+el/path0/src/services/coupon
+Service.js, /vercel/path0/sr
+c/services/nexus/inventoryMa
+nager.js, /vercel/path0/src/
+services/nexus/marketingAdvi
+sor.js, /vercel/path0/src/se
+rvices/nexus/nexusEngine.js,
+ /vercel/path0/src/services/
+nexus/salesAnalyzer.js, /ver
+cel/path0/src/services/order
+Service.js, /vercel/path0/sr
+c/services/productService.js
+, /vercel/path0/src/services
+/serviceUtils.js, /vercel/pa
+th0/src/services/wishlistSer
+vice.js, /vercel/path0/src/u
+tils/healthMonitor.js, 
+dynamic import will not 
+move module into another 
+chunk.
+Building: computing gzip 
+size...
+Building: dist/index.html   
+                        
+0.95 kB Ôöé gzip:   0.52 kB
+Building: dist/assets/index-
+CpEdEF0s.css          
+108.27 kB Ôöé gzip:  19.87 
+kB
+Building: dist/assets/emailS
+ervice-Cv1vt3nF.js      
+0.49 kB Ôöé gzip:   0.26 kB
+Building: dist/assets/index-
+O42btGa8.js         
+1,125.57 kB Ôöé gzip: 
+319.50 kB
+Building: (!) Some chunks 
+are larger than 500 kB 
+after minification. 
+Consider:
+Building: - Using dynamic 
+import() to code-split the 
+application
+Building: - Use build.rollup
+Options.output.manualChunks 
+to improve chunking: https:/
+/rollupjs.org/configuration-
+options/#output-manualchunks
+Building: - Adjust chunk 
+size limit for this warning 
+via 
+build.chunkSizeWarningLimit.
+Building: Ô£ô built in 6.05s
+Building: Build Completed 
+in /vercel/output [12s]
+Building: Deploying 
+outputs...
+Building: Deployment 
+completed
+Building: Creating build 
+cache...
+[2K[1A[2K[GProduction: h
+ttps://style-8yijejqwf-otaci
+lios-projects-47eeaa6d.verce
+l.app [30s]
+Completing...
+Aliased: https://style-man.v
+ercel.app [30s]
+
+Common next commands:
+- `vercel inspect style-8yij
+ejqwf-otacilios-projects-47e
+eaa6d.vercel.app --logs`
+- `vercel redeploy style-8yi
+jejqwf-otacilios-projects-47
+eeaa6d.vercel.app`
+> Tip: Run `npx plugins add 
+vercel/vercel-plugin` to 
+enhance your agent 
+experience
+https://style-8yijejqwf-otacilios-projects-47eeaa6d.vercel.app

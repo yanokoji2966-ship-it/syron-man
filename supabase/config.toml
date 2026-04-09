@@ -1,0 +1,4 @@
+project_id = "ftwwkakvgfzrkssqyscd"
+
+[functions.mercado-pago-pix]
+verify_jwt = false

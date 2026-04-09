@@ -1,0 +1,25 @@
+.favorites-page {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.empty-favorites {
+    padding: 60px;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    margin-top: 40px;
+}
+
+.empty-favorites p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: white;
+    padding: 12px 32px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+}

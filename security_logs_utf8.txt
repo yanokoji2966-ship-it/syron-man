@@ -1,0 +1,26 @@
+﻿node.exe : Retrieving 
+projectÔÇª
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (Retrieving projectÔ   
+ Çª:String) [], Remot    
+eException
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+Resolving deployment 
+"style-man.vercel.app"
+Streaming logs for 
+deployment dpl_91jzPC9fpQ
+5CHYZ7ftDQABX5P95H 
+starting from 09:50:18.36
+
+waiting for new logs...

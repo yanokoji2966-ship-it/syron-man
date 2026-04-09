@@ -1,0 +1,56 @@
+[
+  {
+    "id": "e9c89d26-9766-4dad-a45b-747b3fed0a80",
+    "name": "Camisas",
+    "icon": "Shirt",
+    "created_at": "2026-02-13T14:34:34.058193",
+    "slug": "camisas",
+    "active": true,
+    "order_position": 1
+  },
+  {
+    "id": "04b54745-8201-4945-829a-6a99270ae423",
+    "name": "Alfaiataria",
+    "icon": "Briefcase",
+    "created_at": "2026-02-13T14:34:34.058193",
+    "slug": "alfaiataria",
+    "active": true,
+    "order_position": 2
+  },
+  {
+    "id": "6d6affae-b8b6-46f4-bd45-8325b4257192",
+    "name": "Calças",
+    "icon": "Scissors",
+    "created_at": "2026-02-13T14:34:34.058193",
+    "slug": "calcas",
+    "active": true,
+    "order_position": 3
+  },
+  {
+    "id": "10eb3e62-ce9e-4fe5-9bbf-d801fd21d7f1",
+    "name": "Bermudas",
+    "icon": "Layers",
+    "created_at": "2026-02-13T14:34:34.058193",
+    "slug": "bermudas",
+    "active": true,
+    "order_position": 4
+  },
+  {
+    "id": "a51767b5-0781-40d3-be18-d901aae314f5",
+    "name": "Calçados",
+    "icon": "Footprints",
+    "created_at": "2026-02-13T14:34:34.058193",
+    "slug": "calcados",
+    "active": true,
+    "order_position": 5
+  },
+  {
+    "id": "6de5b157-4e9b-430e-841e-8e01eaac4f9e",
+    "name": "Relógios",
+    "icon": "Watch",
+    "created_at": "2026-02-13T14:34:34.058193",
+    "slug": "relogios",
+    "active": true,
+    "order_position": 6
+  }
+]

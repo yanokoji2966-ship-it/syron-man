@@ -1,0 +1,13 @@
+node_modules
+dist
+.env*
+! .env.production
+cloudflared.exe
+backups
+relatorios
+docs
+tmp
+*.bak
+*.log
+backup_projeto.bat
+iniciar_syron.bat

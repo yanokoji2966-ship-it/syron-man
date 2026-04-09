@@ -1,0 +1,156 @@
+.footer-simple {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 60px;
+}
+
+.main-content {
+  padding-top: 110px;
+  /* Header (94px) + some spacing */
+  min-height: 80vh;
+}
+
+.loading-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.loader-logo {
+  height: 120px;
+  width: auto;
+  margin-bottom: 20px;
+  animation: pulseLogo 2s infinite ease-in-out;
+}
+
+.loader-text {
+  color: var(--primary);
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+}
+
+@keyframes pulseLogo {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Logo Modal Zoom */
+.logo-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.logo-modal-content {
+  position: relative;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.3s ease;
+}
+
+.zoomed-logo {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Main Products Grid - High Density */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Force high density on large screens */
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* 4 columns on tablets/laptops */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 2 columns on mobile */
+@media (max-width: 767px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}

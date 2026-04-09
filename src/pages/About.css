@@ -1,0 +1,122 @@
+.about-page {
+    min-height: 80vh;
+    padding: 120px 20px 80px;
+    background: var(--background);
+    color: var(--text-primary);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.back-btn-simple {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-bottom: 60px;
+    transition: color 0.3s ease;
+}
+
+.back-btn-simple:hover {
+    color: var(--primary-gold);
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.brand-subtitle {
+    display: block;
+    color: var(--secondary-blue);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.brand-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--primary-gold);
+    letter-spacing: 2px;
+}
+
+.manifesto-text {
+    line-height: 1.8;
+    font-size: 18px;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.manifesto-text p {
+    margin: 0;
+}
+
+.manifesto-text .highlight {
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.text-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--primary-gold);
+    margin: 20px auto;
+    opacity: 0.5;
+}
+
+.manifesto-text .emphasis {
+    font-style: italic;
+    color: white;
+    border-left: 2px solid var(--primary-gold);
+    padding-left: 30px;
+}
+
+.manifesto-footer {
+    margin-top: 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 60px;
+}
+
+.manifesto-footer p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.final-quote {
+    font-size: 32px;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 900;
+}
+
+@media (max-width: 768px) {
+    .about-page {
+        padding: 100px 25px 60px;
+    }
+
+    .brand-title {
+        font-size: 32px;
+    }
+
+    .manifesto-text {
+        font-size: 16px;
+        gap: 30px;
+    }
+
+    .manifesto-text .highlight {
+        font-size: 20px;
+    }
+}

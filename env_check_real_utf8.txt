@@ -1,0 +1,30 @@
+﻿node.exe : Retrieving 
+projectÔÇª
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: 
+(Retri    eving 
+projectÔÇª:String    ) 
+[], RemoteException
+    + 
+FullyQualifiedErrorId     
+: NativeCommandError
+ 
+> Environment Variables 
+found for otacilios-projec
+ts-47eeaa6d/style-man 
+[298ms]
+
+ name        value               environments        created    
+ VITE_ENV    Encrypted           Production          4m ago     
+
+Common next commands:
+- `vercel env add`
+- `vercel env rm`
+- `vercel env pull`

@@ -1,0 +1,32 @@
+﻿node.exe : Fetching 
+projects in 
+otacilios-projects-47eeaa6d
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Fetch  
+  ing projec...ojects-47e   
+ eaa6d:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+> Projects found under 
+otacilios-projects-47eeaa6d 
+ [4s]
+
+  Project Name   Latest 
+Production URL              
+   Updated   Node Version   
+  style-man      https://sty
+le-man.vercel.app          
+10m       24.x           
+  y              https://y-l
+yart-gamma-30.vercel.app   
+2d        24.x           
+

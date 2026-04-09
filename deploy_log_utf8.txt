@@ -1,0 +1,65 @@
+﻿node.exe : Retrieving 
+projectÔÇª
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Retri  
+  eving projectÔÇª:String   
+ ) [], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+The `name` property in 
+vercel.json is deprecated (h
+ttps://vercel.link/name-prop
+)
+Deploying otacilios-projects
+-47eeaa6d/style-man
+Uploading 
+[--------------------] 
+(0.0B/956B)
+Uploading 
+[====================] 
+(956.0B/956B)
+Inspect: https://vercel.com/
+otacilios-projects-47eeaa6d/
+style-man/Cuxbe8VsewtK6g4znS
+YzcFdbZM3g [3s]
+Production: https://style-2l
+97qq70a-otacilios-projects-4
+7eeaa6d.vercel.app [3s]
+Building...
+Building...
+Building: Running build in 
+Washington, D.C., USA 
+(East) ÔÇô iad1
+Building: Build machine 
+configuration: 2 cores, 8 GB
+Building: Retrieving list 
+of deployment files...
+Building: Previous build 
+caches not available.
+Building: Downloading 301 
+deployment files...
+Building: Running "vercel 
+build"
+Building: Vercel CLI 50.38.2
+Building: WARNING! Due to 
+`builds` existing in your 
+configuration file, the 
+Build and Development 
+Settings defined in your 
+Project Settings will not 
+apply. Learn More: https://v
+ercel.link/unused-build-sett
+ings
+Building: Installing 
+dependencies...
+Error: Command "npm 
+install" exited with 1
+https://style-2l97qq70a-otacilios-projects-47eeaa6d.vercel.app

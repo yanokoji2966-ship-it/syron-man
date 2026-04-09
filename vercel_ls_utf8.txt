@@ -1,0 +1,62 @@
+﻿node.exe : Retrieving 
+projectÔÇª
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Retri  
+  eving projectÔÇª:String   
+ ) [], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+Fetching deployments in 
+otacilios-projects-47eeaa6d
+> Deployments for otacilios-
+projects-47eeaa6d/style-man 
+[295ms]
+
+  Age     Project           
+                        
+Deployment                  
+                            
+           Status      
+Environment     Duration    
+ Username              
+  3m      otacilios-projects
+-47eeaa6d/style-man     http
+s://style-f5chqcua8-otacilio
+s-projects-47eeaa6d.vercel.a
+pp     ÔùÅ Ready     
+Production      26s         
+ yanokoji2966-2043     
+  5m      otacilios-projects
+-47eeaa6d/style-man     http
+s://style-kdyps1fa2-otacilio
+s-projects-47eeaa6d.vercel.a
+pp     ÔùÅ Error     
+Production      31s         
+ yanokoji2966-2043     
+  8m      otacilios-projects
+-47eeaa6d/style-man     http
+s://style-2l97qq70a-otacilio
+s-projects-47eeaa6d.vercel.a
+pp     ÔùÅ Error     
+Production      6s          
+ yanokoji2966-2043     
+  9m      otacilios-projects
+-47eeaa6d/style-man     http
+s://style-mtbaa4tww-otacilio
+s-projects-47eeaa6d.vercel.a
+pp     ÔùÅ Error     
+Production      7s          
+ yanokoji2966-2043     
+
+https://style-f5chqcua8-otacilios-projects-47eeaa6d.vercel.app
+https://style-kdyps1fa2-otacilios-projects-47eeaa6d.vercel.app
+https://style-2l97qq70a-otacilios-projects-47eeaa6d.vercel.app
+https://style-mtbaa4tww-otacilios-projects-47eeaa6d.vercel.app

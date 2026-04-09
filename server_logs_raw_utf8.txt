@@ -1,0 +1,24 @@
+﻿node.exe : Retrieving 
+projectÔÇª
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Retri  
+  eving projectÔÇª:String   
+ ) [], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+Resolving deployment 
+"style-man.vercel.app"
+Streaming logs for 
+deployment dpl_B244piEbmnMxv
+AvR2L5SmTvRQVdM starting 
+from 23:55:35.43
+
+waiting for new logs...

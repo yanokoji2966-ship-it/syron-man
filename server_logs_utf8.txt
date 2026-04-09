@@ -1,0 +1,21 @@
+﻿node.exe : Error: The 
+--follow flag does not 
+support filtering. 
+Remove: --limit
+No C:\Program 
+Files\nodejs\npx.ps1:29 
+caractere:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: 
+(Error    : The 
+--fo...Remove: --    
+limit:String) [], Remot   
+ eException
+    + 
+FullyQualifiedErrorId     
+: NativeCommandError
+ 

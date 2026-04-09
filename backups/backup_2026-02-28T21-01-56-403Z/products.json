@@ -1,0 +1,25 @@
+[
+  {
+    "id": "60e1291e-dcfe-43b9-bde3-5a9eb968cc1c",
+    "name": "Camisa azul Marinho Casual .",
+    "description": "Camisa , azul Marinho casual . Elegante",
+    "price": 1,
+    "old_price": 2,
+    "cost_price": 0.5,
+    "category_id": null,
+    "category_name": "Camisas",
+    "image_url": "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/4v0hyhlseds-1772288209500.png",
+    "gallery": [
+      "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/69jp74d2yry-1772288790487.png",
+      "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/5tsge9n1do6-1772288791247.png"
+    ],
+    "video_url": "",
+    "stock_quantity": 5,
+    "view_count": 22,
+    "is_active": true,
+    "created_at": "2026-02-28T13:11:12.869441",
+    "updated_at": "2026-02-28T20:40:28.193245",
+    "material": "90 % , algodão e 10 porcento linho",
+    "total_sold": 1
+  }
+]

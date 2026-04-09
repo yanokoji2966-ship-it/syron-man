@@ -1,0 +1,38 @@
+[
+  {
+    "id": "bddb8d28-1f31-477d-9a64-d784d8e37d2b",
+    "order_id": "fd5f2e62-7339-46a2-84c4-5f24d43ea4c2",
+    "product_id": null,
+    "product_name": "Camisa Polo Azul Marinho",
+    "quantity": 3,
+    "unit_price": 1,
+    "unit_cost": 180,
+    "image_url": "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/hji8gh1ybjn-1772205497774.png",
+    "created_at": "2026-02-27T17:15:41.406053",
+    "size": "M"
+  },
+  {
+    "id": "9986a8d9-85ee-465d-b567-6c7c5bef8f26",
+    "order_id": "3fa5a66d-d489-42eb-a186-b16de2fb78fc",
+    "product_id": "60e1291e-dcfe-43b9-bde3-5a9eb968cc1c",
+    "product_name": "Camisa azul Marinho Casual .",
+    "quantity": 1,
+    "unit_price": 1,
+    "unit_cost": 0.5,
+    "image_url": "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/4v0hyhlseds-1772288209500.png",
+    "created_at": "2026-02-28T16:27:01.604871",
+    "size": "G"
+  },
+  {
+    "id": "2019184b-1781-401a-9753-9d3f45f61fc1",
+    "order_id": "ca79bf4e-66ee-46a2-bc5b-d1a2d206e643",
+    "product_id": "60e1291e-dcfe-43b9-bde3-5a9eb968cc1c",
+    "product_name": "Camisa azul Marinho Casual .",
+    "quantity": 1,
+    "unit_price": 1,
+    "unit_cost": 0.5,
+    "image_url": "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/4v0hyhlseds-1772288209500.png",
+    "created_at": "2026-02-28T19:46:27.434153",
+    "size": "M"
+  }
+]

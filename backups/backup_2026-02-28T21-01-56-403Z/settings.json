@@ -1,0 +1,44 @@
+[
+  {
+    "id": "16ce3e02-321b-43d5-ab06-9e7ef6ecbc56",
+    "key": "whatsapp_number",
+    "value": "5589981194628",
+    "created_at": "2026-02-27T17:07:38.51886",
+    "updated_at": "2026-02-27T17:07:38.51886"
+  },
+  {
+    "id": "eb71284d-a48e-4b06-a770-4239b8c1431f",
+    "key": "promo_banner_active",
+    "value": "false",
+    "created_at": "2026-02-27T17:40:43.142747",
+    "updated_at": "2026-02-27T17:40:43.142747"
+  },
+  {
+    "id": "d19b3b25-6ecd-4193-ae0b-0a8ee53e263b",
+    "key": "promo_banner_text",
+    "value": "🔥 FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 299!",
+    "created_at": "2026-02-27T17:40:43.142747",
+    "updated_at": "2026-02-27T17:40:43.142747"
+  },
+  {
+    "id": "c11af671-3580-4834-a922-5cbaf7fff1a6",
+    "key": "payment_link",
+    "value": "",
+    "created_at": "2026-02-28T13:17:32.320787",
+    "updated_at": "2026-02-28T13:17:32.320787"
+  },
+  {
+    "id": "96a0c963-79dc-441a-bc9e-b18a6ad4f405",
+    "key": "hero_carousel_images",
+    "value": "[\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/c28f54h0lxa-1772299398782.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/risnuv07eif-1772299799226.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/bw670uix7a-1772299806889.png\",\"https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/6l2q32ubsgu-1772299819941.png\"]",
+    "created_at": "2026-02-28T17:23:20.066895",
+    "updated_at": "2026-02-28T17:30:21.098881"
+  },
+  {
+    "id": "5230a70b-671b-42f8-bc41-0b9ff1030cda",
+    "key": "store_logo_url",
+    "value": "https://ftwwkakvgfzrkssqyscd.supabase.co/storage/v1/object/public/product-images/products/r9006lhl53d-1772307757969.png",
+    "created_at": "2026-02-28T18:16:56.288823",
+    "updated_at": "2026-02-28T19:42:39.322489"
+  }
+]

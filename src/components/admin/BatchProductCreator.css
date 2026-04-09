@@ -1,0 +1,168 @@
+.batch-creator-card {
+    width: 90vw;
+    max-width: 1100px;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+.batch-header {
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.batch-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.batch-header p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+}
+
+.batch-table-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.batch-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.batch-table th {
+    text-align: left;
+    padding: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+}
+
+.batch-row {
+    background: rgba(255,255,255,0.02);
+    transition: all 0.2s;
+}
+
+.batch-row:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.batch-row td {
+    padding: 8px;
+}
+
+.batch-row input, .batch-row select {
+    width: 100%;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+}
+
+.batch-row input:focus, .batch-row select:focus {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(212,175,55,0.3);
+}
+
+.row-status-cell {
+    text-align: center;
+}
+
+.dot-idle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    margin: 0 auto;
+}
+
+.row-delete-btn {
+    background: transparent;
+    border: none;
+    color: rgba(239, 68, 68, 0.4);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.row-delete-btn:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.batch-actions {
+    padding: 24px 30px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-row-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.add-row-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.save-all-btn {
+    background: #D4AF37;
+    color: #000;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.save-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+.batch-summary {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.03);
+}
+
+/* Status variants */
+.status-success { border-left: 3px solid #10b981; }
+.status-error { border-left: 3px solid #ef4444; }
+.status-saving { border-left: 3px solid #D4AF37; }
