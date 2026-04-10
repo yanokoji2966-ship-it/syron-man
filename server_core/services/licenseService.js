@@ -58,43 +58,42 @@ export async function validateLicense() {
             .eq('signature_key', _0x4a2b[0])
             .single();
 
-        try {
-            const { data: sigData, error: sigError } = await Promise.race([sigPromise, dbTimeout]);
+        const { data: sigData, error: sigError } = await Promise.race([sigPromise, dbTimeout]);
 
-            if (sigError || !sigData) {
-                console.warn('⚠️ AVISO: Assinatura do sistema não encontrada ou inválida.');
-                
-                // Se for Localhost, a gente considera válido por padrão para não travar o dev
-                if (!process.env.VERCEL) {
-                    licenseStatus.valid = true;
-                    licenseStatus.status = 'active';
-                    licenseStatus.message = 'Licença Ativa (Dev Mode)';
-                    return licenseStatus;
-                }
-
-                licenseStatus.valid = false;
-                licenseStatus.message = 'Assinatura Inválida';
+        if (sigError || !sigData) {
+            console.warn('⚠️ AVISO: Assinatura do sistema não encontrada ou inválida.');
+            
+            // Se for Localhost, a gente considera válido por padrão para não travar o dev
+            if (!process.env.VERCEL) {
+                licenseStatus.valid = true;
+                licenseStatus.status = 'active';
+                licenseStatus.message = 'Licença Ativa (Dev Mode)';
                 return licenseStatus;
             }
 
-            // 2. Verify License
-            const licensePromise = supabase
-                .from('licenses')
-                .select('*')
-                .order('expires_at', { ascending: false })
-                .limit(1);
+            licenseStatus.valid = false;
+            licenseStatus.message = 'Assinatura Inválida';
+            return licenseStatus;
+        }
 
-            const { data: licenseData, error: licenseError } = await Promise.race([licensePromise, dbTimeout]);
+        // 2. Verify License
+        const licensePromise = supabase
+            .from('licenses')
+            .select('*')
+            .order('expires_at', { ascending: false })
+            .limit(1);
 
-            if (licenseError || !licenseData || licenseData.length === 0) {
-                console.warn('⚠️ AVISO: Nenhuma licença encontrada.');
-                licenseStatus.valid = false;
-                licenseStatus.status = 'expired';
-                licenseStatus.message = 'Licença Não Encontrada';
-                return licenseStatus;
-            }
+        const { data: licenseData, error: licenseError } = await Promise.race([licensePromise, dbTimeout]);
 
-            const activeLicense = licenseData[0];
+        if (licenseError || !licenseData || licenseData.length === 0) {
+            console.warn('⚠️ AVISO: Nenhuma licença encontrada.');
+            licenseStatus.valid = false;
+            licenseStatus.status = 'expired';
+            licenseStatus.message = 'Licença Não Encontrada';
+            return licenseStatus;
+        }
+
+        const activeLicense = licenseData[0];
         const now = new Date();
         const expirationDate = activeLicense.expires_at ? new Date(activeLicense.expires_at) : null;
         const graceDate = activeLicense.grace_until ? new Date(activeLicense.grace_until) : (expirationDate ? new Date(expirationDate.getTime() + 7 * 24 * 60 * 60 * 1000) : null);
