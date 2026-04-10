@@ -41,44 +41,50 @@ async function logLicenseEvent(key, event, message, req = null) {
 }
 
 /**
- * Validates the system signature and license
- * This is a silent protection, it won't crash the server
+ * Validates the system signature and license with a safety timeout
  */
 export async function validateLicense() {
     try {
         console.log('🛡️ Verificando Assinatura do Sistema...');
 
+        // Timeout de 10s para evitar que boot lento trave o servidor
+        const dbTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('Database Timeout')), 10000));
+
         // 1. Verify System Signature
-        const { data: sigData, error: sigError } = await supabase
+        const sigPromise = supabase
             .from('system_signature')
             .select('*')
             .eq('signature_key', _0x4a2b[0])
             .single();
 
-        if (sigError || !sigData) {
-            console.warn('⚠️ AVISO: Assinatura do sistema não encontrada ou inválida.');
-            licenseStatus.valid = false;
-            licenseStatus.message = 'Assinatura Inválida';
-            return licenseStatus;
-        }
+        try {
+            const { data: sigData, error: sigError } = await Promise.race([sigPromise, dbTimeout]);
 
-        // 2. Verify License
-        const { data: licenseData, error: licenseError } = await supabase
-            .from('licenses')
-            .select('*')
-            .order('expires_at', { ascending: false })
-            .limit(1);
+            if (sigError || !sigData) {
+                console.warn('⚠️ AVISO: Assinatura do sistema não encontrada ou inválida.');
+                licenseStatus.valid = false;
+                licenseStatus.message = 'Assinatura Inválida';
+                return licenseStatus;
+            }
 
-        if (licenseError || !licenseData || licenseData.length === 0) {
-            console.warn('⚠️ AVISO: Nenhuma licença encontrada.');
-            licenseStatus.valid = false;
-            licenseStatus.status = 'expired';
-            licenseStatus.message = 'Licença Não Encontrada';
-            await logLicenseEvent(null, 'violation', 'Tentativa de acesso sem licença configurada.');
-            return licenseStatus;
-        }
+            // 2. Verify License
+            const licensePromise = supabase
+                .from('licenses')
+                .select('*')
+                .order('expires_at', { ascending: false })
+                .limit(1);
 
-        const activeLicense = licenseData[0];
+            const { data: licenseData, error: licenseError } = await Promise.race([licensePromise, dbTimeout]);
+
+            if (licenseError || !licenseData || licenseData.length === 0) {
+                console.warn('⚠️ AVISO: Nenhuma licença encontrada.');
+                licenseStatus.valid = false;
+                licenseStatus.status = 'expired';
+                licenseStatus.message = 'Licença Não Encontrada';
+                return licenseStatus;
+            }
+
+            const activeLicense = licenseData[0];
         const now = new Date();
         const expirationDate = activeLicense.expires_at ? new Date(activeLicense.expires_at) : null;
         const graceDate = activeLicense.grace_until ? new Date(activeLicense.grace_until) : (expirationDate ? new Date(expirationDate.getTime() + 7 * 24 * 60 * 60 * 1000) : null);
