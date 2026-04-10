@@ -79,28 +79,28 @@ export const NexusProvider = ({ children }) => {
                 'global_sales_count'
             ];
 
-            const results = await Promise.all(keys.map(k => orderService.getSetting(k)));
+            const results = await orderService.getSettingsBatch(keys);
 
-            if (results[0]) {
-                const bData = JSON.parse(results[0]);
+            if (results['nexus_banner']) {
+                const bData = JSON.parse(results['nexus_banner']);
                 // Migração: se não tiver images mas tiver image, converte
                 if (!bData.images && bData.image) {
                     bData.images = [bData.image];
                 }
                 setBanner(bData);
             }
-            if (results[1]) setBranding(JSON.parse(results[1]));
-            if (results[2]) setSections(JSON.parse(results[2]));
-            if (results[3]) setShipping(JSON.parse(results[3]));
-            if (results[4]) setMaintenance(JSON.parse(results[4]));
-            if (results[5]) setLayout(results[5]);
-            if (results[6]) setTypography(JSON.parse(results[6]));
-            if (results[7]) setColors(JSON.parse(results[7]));
+            if (results['nexus_branding']) setBranding(JSON.parse(results['nexus_branding']));
+            if (results['nexus_sections']) setSections(JSON.parse(results['nexus_sections']));
+            if (results['nexus_shipping']) setShipping(JSON.parse(results['nexus_shipping']));
+            if (results['nexus_maintenance']) setMaintenance(JSON.parse(results['nexus_maintenance']));
+            if (results['nexus_layout']) setLayout(results['nexus_layout']);
+            if (results['nexus_typography']) setTypography(JSON.parse(results['nexus_typography']));
+            if (results['nexus_colors']) setColors(JSON.parse(results['nexus_colors']));
 
             setGlobalSales({
-                enabled: results[8] === 'true',
-                limit: parseInt(results[9]) || 0,
-                count: parseInt(results[10]) || 0
+                enabled: results['global_sales_limit_enabled'] === 'true',
+                limit: parseInt(results['global_sales_limit_value']) || 0,
+                count: parseInt(results['global_sales_count']) || 0
             });
 
         } catch (error) {

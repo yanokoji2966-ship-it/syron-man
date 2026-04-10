@@ -23,26 +23,26 @@ const StoreSettings = () => {
         const loadSettings = async () => {
             setLoading(true);
             try {
-                const [name, city, logo, footer] = await Promise.all([
-                    orderService.getSetting('store_name'),
-                    orderService.getSetting('exclusive_city'),
-                    orderService.getSetting('store_logo_url'),
-                    orderService.getSetting('store_footer_text')
-                ]);
+                const keys = [
+                    'store_name',
+                    'exclusive_city',
+                    'store_logo_url',
+                    'store_footer_text',
+                    'global_sales_limit_enabled',
+                    'global_sales_limit_value',
+                    'global_sales_count'
+                ];
+                
+                const results = await orderService.getSettingsBatch(keys);
 
-                if (name) setStoreName(name);
-                if (city) setExclusiveCity(city);
-                if (logo) setLogoUrl(logo);
-                if (footer) setFooterText(footer);
+                if (results['store_name']) setStoreName(results['store_name']);
+                if (results['exclusive_city']) setExclusiveCity(results['exclusive_city']);
+                if (results['store_logo_url']) setLogoUrl(results['store_logo_url']);
+                if (results['store_footer_text']) setFooterText(results['store_footer_text']);
 
-                const [gEnabled, gLimit, gCount] = await Promise.all([
-                    orderService.getSetting('global_sales_limit_enabled'),
-                    orderService.getSetting('global_sales_limit_value'),
-                    orderService.getSetting('global_sales_count')
-                ]);
-                setGlobalLimitEnabled(gEnabled === 'true');
-                setGlobalLimitValue(parseInt(gLimit) || 0);
-                setGlobalSalesCount(parseInt(gCount) || 0);
+                setGlobalLimitEnabled(results['global_sales_limit_enabled'] === 'true');
+                setGlobalLimitValue(parseInt(results['global_sales_limit_value']) || 0);
+                setGlobalSalesCount(parseInt(results['global_sales_count']) || 0);
             } catch (err) {
                 console.error('Erro ao carregar configurações:', err);
             } finally {

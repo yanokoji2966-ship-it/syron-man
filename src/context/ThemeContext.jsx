@@ -25,26 +25,28 @@ export const ThemeProvider = ({ children }) => {
     useEffect(() => {
         async function loadTheme() {
             try {
-                const [p, s, bg, r, gi, ff, bs, ht] = await Promise.all([
-                    orderService.getSetting('theme_primary'),
-                    orderService.getSetting('theme_secondary'),
-                    orderService.getSetting('theme_background'),
-                    orderService.getSetting('theme_radius'),
-                    orderService.getSetting('theme_glass_intensity'),
-                    orderService.getSetting('theme_font_family'),
-                    orderService.getSetting('theme_button_style'),
-                    orderService.getSetting('theme_header_type')
-                ]);
+                const keys = [
+                    'theme_primary',
+                    'theme_secondary',
+                    'theme_background',
+                    'theme_radius',
+                    'theme_glass_intensity',
+                    'theme_font_family',
+                    'theme_button_style',
+                    'theme_header_type'
+                ];
+                
+                const results = await orderService.getSettingsBatch(keys);
 
                 const newTheme = { ...theme };
-                if (p) newTheme.primary = p;
-                if (s) newTheme.secondary = s;
-                if (bg) newTheme.background = bg;
-                if (r) newTheme.radius = r;
-                if (gi) newTheme.glass_intensity = gi;
-                if (ff) newTheme.font_family = ff;
-                if (bs) newTheme.button_style = bs;
-                if (ht) newTheme.header_type = ht;
+                if (results['theme_primary']) newTheme.primary = results['theme_primary'];
+                if (results['theme_secondary']) newTheme.secondary = results['theme_secondary'];
+                if (results['theme_background']) newTheme.background = results['theme_background'];
+                if (results['theme_radius']) newTheme.radius = results['theme_radius'];
+                if (results['theme_glass_intensity']) newTheme.glass_intensity = results['theme_glass_intensity'];
+                if (results['theme_font_family']) newTheme.font_family = results['theme_font_family'];
+                if (results['theme_button_style']) newTheme.button_style = results['theme_button_style'];
+                if (results['theme_header_type']) newTheme.header_type = results['theme_header_type'];
 
                 setTheme(newTheme);
                 applyTheme(newTheme);
