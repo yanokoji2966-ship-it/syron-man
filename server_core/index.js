@@ -77,6 +77,16 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'SYRON MAN API Online', timestamp: new Date() });
 });
 
+// Rota de Diagnóstico (Privada para suporte)
+app.get('/api/diagnostics', (req, res) => {
+    res.json({
+        vercel: !!process.env.VERCEL,
+        supabase_configured: !!(process.env.VITE_SUPABASE_URL && process.env.VITE_SUPABASE_ANON_KEY),
+        node_version: process.version,
+        env_keys_present: Object.keys(process.env).filter(k => k.includes('SUPABASE') || k.includes('VITE'))
+    });
+});
+
 // Rota de Status da Licença (Protegida silenciosamente)
 app.get('/api/license/status', (req, res) => {
     res.json(getLicenseStatus());

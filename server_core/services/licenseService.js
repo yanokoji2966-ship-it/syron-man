@@ -13,7 +13,8 @@ let licenseStatus = {
     days_to_expiry: 0,
     status: 'idle', 
     message: 'Sistema não inicializado',
-    client: null
+    client: null,
+    db_failed: false // Flag de falha de conexão
 };
 
 const SECRET_SALT = 'SYRON-MAN-CORE-SALT-2026';
@@ -155,12 +156,12 @@ export async function validateLicense() {
     } catch (error) {
         console.error('❌ Erro na validação de licença:', error.message);
         
-        // Auto-heal para Desenvolvimento: Se falhou e é localhost, libera pra não travar o dev
-        if (process.env.NODE_ENV === 'development' || !process.env.VERCEL) {
-            licenseStatus.valid = true;
-            licenseStatus.status = 'active';
-            licenseStatus.message = 'Modo Desenvolvedor Ativo';
-        }
+        // MODO DE RECUPERAÇÃO: Se o banco falhar, a gente marca como válido temporariamente 
+        // para não travar o cliente por causa de instabilidade no Supabase/Vercel
+        licenseStatus.valid = true;
+        licenseStatus.db_failed = true;
+        licenseStatus.status = 'active';
+        licenseStatus.message = 'Modo de Recuperação (Banco Instável)';
         
         return licenseStatus;
     }

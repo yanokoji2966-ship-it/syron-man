@@ -6,6 +6,7 @@ import { useToast } from '../Toast';
 const CategoriesManager = ({ categories: initialCategories = [], onRefresh }) => {
     const [categories, setCategories] = useState(initialCategories);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [updating, setUpdating] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingCategory, setEditingCategory] = useState(null);
@@ -28,11 +29,13 @@ const CategoriesManager = ({ categories: initialCategories = [], onRefresh }) =>
         }
         
         setLoading(true);
+        setError(null);
         try {
             const data = await categoryService.getAllCategories(true);
             setCategories(data || []);
         } catch (error) {
             console.error('Erro ao carregar categorias:', error);
+            setError('Falha na comunicação com o servidor.');
             showToast('Erro ao carregar categorias.', 'error');
         } finally {
             setLoading(false);
@@ -161,6 +164,15 @@ const CategoriesManager = ({ categories: initialCategories = [], onRefresh }) =>
                     <tbody>
                         {loading && categories.length === 0 ? (
                             <tr><td colSpan="4" style={{ textAlign: 'center', padding: '40px' }}>Carregando categorias...</td></tr>
+                        ) : error ? (
+                            <tr>
+                                <td colSpan="4" style={{ textAlign: 'center', padding: '40px' }}>
+                                    <div style={{ color: '#ef4444', marginBottom: '12px' }}>{error}</div>
+                                    <button onClick={loadCategories} className="add-product-btn" style={{ background: 'rgba(239,68,68,0.2)' }}>
+                                        <RefreshCw size={14} style={{ marginRight: '8px' }} /> Tentar Novamente
+                                    </button>
+                                </td>
+                            </tr>
                         ) : categories.length === 0 ? (
                             <tr><td colSpan="4" style={{ textAlign: 'center', padding: '40px' }}>Nenhuma categoria cadastrada.</td></tr>
                         ) : categories.map((cat, idx) => (

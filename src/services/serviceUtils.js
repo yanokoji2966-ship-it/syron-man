@@ -66,9 +66,9 @@ export const withResilience = async (promiseFn, { timeout = 30000, retries = 3, 
 export const ensureSession = async () => {
     if (!supabase) return false;
     try {
-        // Timeout de 5s para evitar que a verificação de sessão trave o resto
+        // Timeout de 15s para evitar que a verificação de sessão trave o resto
         const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Session verify timeout')), 5000)
+            setTimeout(() => reject(new Error('Session verify timeout')), 15000)
         );
         const { data: { session }, error } = await Promise.race([
             supabase.auth.getSession(),
@@ -171,7 +171,7 @@ export const apiFetch = async (endpoint, options = {}, resilienceOptions = {}) =
                     cachedToken = raceResult.data.session?.access_token || null;
                     lastTokenFetch = now;
                 } else {
-                    console.warn('apiFetch: Timeout de 3s atingido na busca de sessão. Prosseguindo como visitante...');
+                    console.warn('apiFetch: Timeout de 8s atingido na busca de sessão. Prosseguindo como visitante...');
                 }
             }
             
