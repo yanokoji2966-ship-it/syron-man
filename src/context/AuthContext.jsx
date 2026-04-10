@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
                 console.warn('AuthContext: Timeout de inicialização atingido. Forçando loading=false');
                 setLoading(false);
             }
-        }, 5000);
+        }, 15000); // Aumentado para 15s (segurança da interface)
 
         // Check active sessions and sets the user
         const getSession = async () => {
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
 
                 // Promise.race para evitar que getSession trave infinitamente (10s para redes lentas)
                 const sessionPromise = supabase.auth.getSession();
-                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Auth Timeout')), 10000));
+                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Auth Timeout')), 30000)); // 30s para redes lentas
 
                 try {
                     const { data: { session } } = await Promise.race([sessionPromise, timeoutPromise]);
