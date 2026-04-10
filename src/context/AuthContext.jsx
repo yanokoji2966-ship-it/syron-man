@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
                 console.warn('AuthContext: Timeout de inicialização atingido. Forçando loading=false');
                 setLoading(false);
             }
-        }, 15000); // Aumentado para 15s (segurança da interface)
+        }, 45000); // Aumentado para 45s (segurança máxima para redes críticas)
 
         // Check active sessions and sets the user
         const getSession = async () => {
@@ -83,7 +83,11 @@ export const AuthProvider = ({ children }) => {
                     setUser(session?.user ?? null);
                     
                     if (session?.user) {
-                        await fetchUserRole(session.user.email);
+                        // RPC com timeout interno de 12s para não travar o boot
+                        const rolePromise = fetchUserRole(session.user.email);
+                        const roleTimeout = new Promise(r => setTimeout(r, 12000));
+                        await Promise.race([rolePromise, roleTimeout]);
+                        
                         // AAL Check (MFA/2FA)
                         const { data: { currentLevel } } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
                         setIsMfaVerified(currentLevel === 'aal2');
