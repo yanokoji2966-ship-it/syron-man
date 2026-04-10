@@ -166,6 +166,12 @@ router.post('/save', restrictIfExpired, async (req, res) => {
 
         console.log(`[API Products] Salvando produto: ${productData.name} por ${adminEmail}`);
 
+        // Sanitização de entradas vazias para evitar erro 'invalid input syntax for type numeric: ""'
+        if (productData.price === '') productData.price = 0;
+        if (productData.old_price === '') productData.old_price = null;
+        if (productData.cost_price === '') productData.cost_price = null;
+        if (productData.stock_quantity === '') productData.stock_quantity = 0;
+
         // 2. Chamar RPC Atômica (V2.1 - p_data primeiro)
         const { data: savedProduct, error: rpcError } = await supabase.rpc('manage_products_v2', {
             p_data: productData,
