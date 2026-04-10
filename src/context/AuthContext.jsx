@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
 
                 // Promise.race para evitar que getSession trave infinitamente (10s para redes lentas)
                 const sessionPromise = supabase.auth.getSession();
-                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Auth Timeout')), 30000)); // 30s para redes lentas
+                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Auth Timeout')), 15000)); // 15s para redes lentas (mais agressivo)
 
                 try {
                     const { data: { session } } = await Promise.race([sessionPromise, timeoutPromise]);

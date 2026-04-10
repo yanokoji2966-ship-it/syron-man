@@ -40,8 +40,8 @@ app.set('trust proxy', 1);
 // Rate Limiting (Proteção contra Brute Force / DoS)
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 100, // limite de 100 requisições por IP
-    message: { error: 'Muitas requisições vindas deste IP. Tente novamente em 15 minutos.' },
+    max: 2000, // limite de 2000 requisições por IP (evita bloqueio no Turbo Load)
+    message: { error: 'Limite de requisições excedido. Verifique sua conexão.' },
     standardHeaders: true,
     legacyHeaders: false,
 });
@@ -53,7 +53,7 @@ app.use(helmet({
 app.use(limiter);
 app.use(hpp()); // Proteção contra Parameter Pollution
 app.use(cors());
-app.use(express.json({ limit: '10kb' })); // Limite de payload para evitar DoS
+app.use(express.json({ limit: '500kb' })); // Aumentado para 500kb para suportar importações e configs grandes
 app.use(morgan('dev'));
 
 // Rotas de Domínio

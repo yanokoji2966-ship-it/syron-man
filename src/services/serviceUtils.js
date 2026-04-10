@@ -161,9 +161,18 @@ export const apiFetch = async (endpoint, options = {}, resilienceOptions = {}) =
         
         try {
             if (!cachedToken || (now - lastTokenFetch > TOKEN_CACHE_MS)) {
-                const { data: { session } } = await supabase.auth.getSession();
-                cachedToken = session?.access_token || null;
-                lastTokenFetch = now;
+                // Timeout relâmpago (3s) para o token: se o Auth travar, a API não trava junto
+                const tokenTimeout = new Promise(r => setTimeout(r, 3000));
+                const sessionPromise = supabase.auth.getSession();
+                
+                const raceResult = await Promise.race([sessionPromise, tokenTimeout]);
+                
+                if (raceResult && raceResult.data) {
+                    cachedToken = raceResult.data.session?.access_token || null;
+                    lastTokenFetch = now;
+                } else {
+                    console.warn('apiFetch: Timeout de 3s atingido na busca de sessão. Prosseguindo como visitante...');
+                }
             }
             
             if (cachedToken) {
