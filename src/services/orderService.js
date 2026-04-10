@@ -292,6 +292,7 @@ export const orderService = {
     updatePaymentStatus,
     saveOrderPaymentInfo,
     getSetting,
+    getSettingsBatch,
     updateSetting,
     updateCustomerData,
     getAllCustomers,
