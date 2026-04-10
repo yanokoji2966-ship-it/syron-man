@@ -157,5 +157,17 @@ export const productService = {
 
     async getRecommendations(productId) {
         return apiFetch(`/api/recommendations/${productId}`, {}, { name: 'Buscar Recomendações' });
+    },
+
+    async bulkImport(products, onProgress = null) {
+        return apiFetch('/api/products/bulk-import', {
+            method: 'POST',
+            body: JSON.stringify({ products })
+        }, { 
+            name: 'Importação Massiva (Bulk Import)', 
+            timeout: 300000, // 5 minutos para lotes grandes
+            retries: 1, 
+            onProgress 
+        });
     }
 }

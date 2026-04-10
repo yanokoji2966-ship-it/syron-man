@@ -38,6 +38,7 @@ const AdminSidebar = ({ activeTab, setActiveTab, onLogout, isOpen }) => {
                 { id: 'history', label: 'Histórico Operacional' },
                 { id: 'orders', label: 'Pedidos' },
                 { id: 'products', label: 'Produtos' },
+                { id: 'bulk_import', label: 'Importação Massiva' },
                 { id: 'categories', label: 'Categorias' },
                 { id: 'style-advisor', label: 'Consultor de Estilo', icon: <Sparkles size={20} /> },
                 { id: 'customers', label: 'Clientes' }

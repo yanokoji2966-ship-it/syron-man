@@ -30,6 +30,7 @@ import BusinessIntelligence from '../components/admin/BusinessIntelligence';
 import CustomerIntelligence from '../components/admin/CustomerIntelligence';
 import HighEndProductCreator from '../components/admin/HighEndProductCreator';
 import BatchProductCreator from '../components/admin/BatchProductCreator';
+import BulkImportProducts from '../components/admin/BulkImportProducts';
 import './Admin.css';
 
 
@@ -136,7 +137,7 @@ const Admin = ({ onNavigate }) => {
         const handleHashChange = () => {
             const hash = window.location.hash.replace('#', '');
             const validTabs = [
-                'overview', 'orders', 'products', 'categories', 'customers',
+                'overview', 'orders', 'products', 'bulk_import', 'categories', 'customers',
                 'reports', 'finance', 'performance', 'ai_assistant',
                 'appearance', 'branding_store', 'branding', 'team', 'branding', 'health', 'settings', 'history', 'nexus_core', 'nexus_intelligence', 'nexus_logistics'
             ];
@@ -485,6 +486,8 @@ const Admin = ({ onNavigate }) => {
                 );
             case 'categories':
                 return <CategoriesManager categories={categories} onRefresh={() => loadData(true)} />;
+            case 'bulk_import':
+                return <BulkImportProducts />;
             case 'style-advisor': return <StylesManagement products={products} />;
             case 'business-intelligence': return <BusinessIntelligence />;
             case 'customer-intelligence': return <CustomerIntelligence />;

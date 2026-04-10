@@ -2,58 +2,67 @@ import { useState, useCallback } from 'react';
 import { productService } from '../services/productService';
 
 /**
- * useUploadQueue.js
- * Gerencia o upload de múltiplas imagens em background.
+ * Hook para gerenciar filas de upload com concorrência controlada.
+ * Ideal para importações massivas de imagens.
  */
-export const useUploadQueue = () => {
-    const [queue, setQueue] = useState([]); // { id, file, status, url, progress }
-    const [isUploading, setIsUploading] = useState(false);
+export const useUploadQueue = (concurrency = 3) => {
+    const [queue, setQueue] = useState([]);
+    const [processing, setProcessing] = useState(false);
+    const [results, setResults] = useState({}); // { fileName: url }
+    const [errors, setErrors] = useState({}); // { fileName: error }
+    const [progress, setProgress] = useState(0); // 0 a 100
 
-    const addToQueue = useCallback((files) => {
-        const newItems = Array.from(files).map(file => ({
-            id: Math.random().toString(36).substr(2, 9),
-            file,
-            status: 'waiting',
-            url: null,
-            progress: 0
-        }));
-        setQueue(prev => [...prev, ...newItems]);
-    }, []);
+    const processQueue = useCallback(async (files, onProgress) => {
+        setProcessing(true);
+        setResults({});
+        setErrors({});
+        setProgress(0);
 
-    const startUpload = useCallback(async (onItemComplete) => {
-        if (isUploading) return;
-        setIsUploading(true);
+        const total = files.length;
+        let completed = 0;
+        const localResults = {};
+        const localErrors = {};
 
-        const waitingItems = queue.filter(item => item.status === 'waiting');
-        
-        for (const item of waitingItems) {
-            // Atualiza status para uploading
-            setQueue(prev => prev.map(q => q.id === item.id ? { ...q, status: 'uploading' } : q));
-
-            try {
-                const url = await productService.uploadImage(item.file, (msg) => {
-                    // Opcional: extrair porcentagem do msg se o uploadImage suportar
-                });
-
-                setQueue(prev => prev.map(q => q.id === item.id ? { ...q, status: 'done', url } : q));
-                if (onItemComplete) onItemComplete(url);
-                
-            } catch (err) {
-                console.error(`Upload failed for ${item.file.name}:`, err);
-                setQueue(prev => prev.map(q => q.id === item.id ? { ...q, status: 'error' } : q));
-            }
+        // Dividir em lotes para respeitar a concorrência
+        for (let i = 0; i < files.length; i += concurrency) {
+            const batch = files.slice(i, i + concurrency);
+            
+            await Promise.all(batch.map(async (file) => {
+                try {
+                    // Tenta fazer o upload usando o serviço existente (que já tem compressão e resiliência)
+                    const url = await productService.uploadImage(file, (msg) => {
+                        console.log(`[Queue] ${file.name}: ${msg}`);
+                    });
+                    
+                    localResults[file.name] = url;
+                } catch (err) {
+                    console.error(`[Queue] Falha no upload de ${file.name}:`, err);
+                    localErrors[file.name] = err.message;
+                } finally {
+                    completed++;
+                    const currentProgress = Math.round((completed / total) * 100);
+                    setProgress(currentProgress);
+                    if (onProgress) onProgress(currentProgress, completed, total);
+                }
+            }));
         }
 
-        setIsUploading(false);
-    }, [queue, isUploading]);
+        setResults(localResults);
+        setErrors(localErrors);
+        setProcessing(false);
+        return { results: localResults, errors: localErrors };
+    }, [concurrency]);
 
-    const removeFromQueue = useCallback((id) => {
-        setQueue(prev => prev.filter(item => item.id !== id));
-    }, []);
-
-    const clearQueue = useCallback(() => {
-        setQueue([]);
-    }, []);
-
-    return { queue, addToQueue, startUpload, removeFromQueue, clearQueue, isUploading };
+    return {
+        processQueue,
+        processing,
+        results,
+        errors,
+        progress,
+        resetQueue: () => {
+            setResults({});
+            setErrors({});
+            setProgress(0);
+        }
+    };
 };

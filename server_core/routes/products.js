@@ -235,4 +235,102 @@ router.delete('/:id', restrictIfExpired, async (req, res) => {
     }
 });
 
+// Importação Massiva (Bulk Import) com Sincronização Inteligente
+router.post('/bulk-import', restrictIfExpired, async (req, res) => {
+    try {
+        const { products } = req.body;
+        if (!products || !Array.isArray(products)) {
+            return res.status(400).json({ error: 'Lista de produtos inválida' });
+        }
+
+        // Auditoria
+        const authHeader = req.headers.authorization;
+        let adminEmail = 'unknown@admin.com';
+        if (authHeader) {
+            const { data: { user } } = await supabase.auth.getUser(authHeader.replace('Bearer ', ''));
+            if (user) adminEmail = user.email;
+        }
+
+        console.log(`[API Products] Iniciando Bulk Import: ${products.length} itens por ${adminEmail}`);
+
+        // 1. Buscar todos os produtos atuais para comparação local (Perf++)
+        const { data: existingProducts } = await supabase
+            .from('products')
+            .select('id, name, description, price, cost_price, stock_quantity, material, is_active, category_id, sales_limit');
+
+        const results = {
+            created: 0,
+            updated: 0,
+            ignored: 0,
+            errors: []
+        };
+
+        // 2. Processar Lote
+        for (const item of products) {
+            try {
+                const existing = existingProducts?.find(p => p.name?.trim().toLowerCase() === item.name?.trim().toLowerCase());
+                
+                let shouldUpdate = false;
+                let payload = { ...item };
+
+                if (existing) {
+                    // Sincronização Inteligente: Comparar campos críticos
+                    const fieldsChanged = 
+                                (item.price !== undefined && parseFloat(item.price) !== parseFloat(existing.price)) ||
+                                (item.description !== undefined && item.description !== existing.description) ||
+                                (item.stock_quantity !== undefined && parseInt(item.stock_quantity) !== parseInt(existing.stock_quantity)) ||
+                                (item.cost_price !== undefined && parseFloat(item.cost_price) !== parseFloat(existing.cost_price)) ||
+                                (item.material !== undefined && item.material !== existing.material) ||
+                                (item.is_active !== undefined && item.is_active !== existing.is_active) ||
+                                (item.category_id !== undefined && item.category_id !== existing.category_id);
+
+                    if (fieldsChanged) {
+                        shouldUpdate = true;
+                        payload.id = existing.id; // Vincula ao ID existente
+                    } else {
+                        results.ignored++;
+                        continue;
+                    }
+                }
+
+                // Chamar RPC para salvar/atualizar
+                const { data: saved, error: rpcError } = await supabase.rpc('manage_products_v2', {
+                    p_data: payload,
+                    p_id: payload.id || null
+                });
+
+                if (rpcError) throw rpcError;
+
+                if (shouldUpdate) results.updated++;
+                else results.created++;
+
+            } catch (err) {
+                console.error(`[Bulk Import] Erro no item ${item.name}:`, err.message);
+                results.errors.push({ name: item.name, error: err.message });
+            }
+        }
+
+        // 3. Registrar Log de Auditoria Massiva
+        try {
+            await supabase.from('admin_logs').insert([{
+                admin_email: adminEmail,
+                action: 'BULK_IMPORT',
+                details: { 
+                    total: products.length, 
+                    created: results.created, 
+                    updated: results.updated, 
+                    ignored: results.ignored,
+                    errors: results.errors.length
+                }
+            }]);
+        } catch (e) {}
+
+        res.json(results);
+
+    } catch (error) {
+        console.error('[API Products] Erro crítico no Bulk Import:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 export default router;
