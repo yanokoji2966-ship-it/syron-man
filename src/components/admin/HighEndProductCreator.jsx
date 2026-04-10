@@ -39,22 +39,41 @@ const HighEndProductCreator = ({ initialProduct = null, categories = [], onClose
     );
 
     // Hook de Fila de Upload
-    const { queue, addToQueue, startUpload, removeFromQueue, isUploading } = useUploadQueue();
+    const { processQueue, processing: isUploading, progress } = useUploadQueue(2);
+    const [queue, setQueue] = useState([]);
 
-    // Iniciar upload assim que itens entram na fila
-    useEffect(() => {
-        if (queue.some(i => i.status === 'waiting')) {
-            startUpload((url) => {
-                // Ao terminar um upload, adiciona na galeria do produto
+    const handleFileUpload = async (files) => {
+        if (!files || files.length === 0) return;
+        
+        const filesArray = Array.from(files);
+        
+        // Define o estado inicial da fila para UI
+        setQueue(filesArray.map(f => ({ id: Math.random().toString(), file: f, status: 'uploading' })));
+
+        try {
+            const result = await processQueue(filesArray);
+            
+            // Depois que a fila conclui
+            Object.keys(result.results).forEach(fileName => {
+                const url = result.results[fileName];
                 setProduct(prev => ({
                     ...prev,
                     gallery: [...(prev.gallery || []), url],
-                    // Se não tiver imagem principal, define essa como principal
                     image_url: prev.image_url || url
                 }));
             });
+            
+            // Atualiza status da fila para 'done' ou 'error'
+            setQueue(prev => prev.map(item => ({
+                ...item,
+                status: result.results[item.file.name] ? 'done' : 'error'
+            })));
+            
+            setTimeout(() => setQueue([]), 4000); // limpa da tela depois de um tempo
+        } catch (e) {
+            console.error('Falha no upload batch', e);
         }
-    }, [queue, startUpload]);
+    };
 
     const handleFieldChange = (field, value) => {
         setProduct(prev => ({ ...prev, [field]: value }));
@@ -180,7 +199,7 @@ const HighEndProductCreator = ({ initialProduct = null, categories = [], onClose
                                 type="file"
                                 multiple
                                 hidden
-                                onChange={e => addToQueue(e.target.files)}
+                                onChange={e => handleFileUpload(e.target.files)}
                             />
                         </div>
 
