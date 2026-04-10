@@ -3,29 +3,33 @@ import { Plus, Edit, Trash2, Save, X, GripVertical, Eye, EyeOff, RefreshCw, Laye
 import { categoryService } from '../../services/categoryService';
 import { useToast } from '../Toast';
 
-const CategoriesManager = () => {
-    const [categories, setCategories] = useState([]);
-    const [loading, setLoading] = useState(true);
+const CategoriesManager = ({ categories: initialCategories = [], onRefresh }) => {
+    const [categories, setCategories] = useState(initialCategories);
+    const [loading, setLoading] = useState(false);
     const [updating, setUpdating] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingCategory, setEditingCategory] = useState(null);
     const { showToast } = useToast();
 
-    const [form, setForm] = useState({
-        name: '',
-        active: true,
-        order_position: 0
-    });
-
+    // Sincroniza com as categorias do Admin se fornecidas
     useEffect(() => {
-        loadCategories();
-    }, []);
+        if (initialCategories && initialCategories.length > 0) {
+            setCategories(initialCategories);
+            setLoading(false);
+        } else if (!initialCategories || initialCategories.length === 0) {
+            loadCategories();
+        }
+    }, [initialCategories]);
 
     const loadCategories = async () => {
+        if (onRefresh) {
+            return onRefresh();
+        }
+        
         setLoading(true);
         try {
             const data = await categoryService.getAllCategories(true);
-            setCategories(data);
+            setCategories(data || []);
         } catch (error) {
             console.error('Erro ao carregar categorias:', error);
             showToast('Erro ao carregar categorias.', 'error');

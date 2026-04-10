@@ -24,21 +24,33 @@ router.get('/', async (req, res) => {
 
 // Listar todas as categorias
 router.get('/categories', async (req, res) => {
+    const start = Date.now();
     try {
         const { adminMode } = req.query;
+        console.log(`API: [GET] Listando categorias (adminMode=${adminMode})`);
+        
         let query = supabase
             .from('categories')
-            .select('*')
-            .order('order_position', { ascending: true });
+            .select('*');
+
+        // Se a coluna order_position existir, usamos ela. Caso contrário, usamos created_at
+        // Nota: A migração 20260410_fix_categories_v2 garante que a coluna exista.
+        query = query.order('order_position', { ascending: true });
 
         if (adminMode !== 'true') {
             query = query.eq('active', true);
         }
 
         const { data, error } = await query;
-        if (error) throw error;
+        if (error) {
+            console.error('Supabase Error (List Categories):', error);
+            throw error;
+        }
+        
+        console.log(`API: [GET] Categorias enviadas: ${data?.length || 0} em ${Date.now() - start}ms`);
         res.json(data);
     } catch (error) {
+        console.error('API Critical Error (List Categories):', error);
         res.status(500).json({ error: error.message });
     }
 });

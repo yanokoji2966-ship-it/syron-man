@@ -148,7 +148,6 @@ const Admin = ({ onNavigate }) => {
         window.addEventListener('hashchange', handleHashChange);
         handleHashChange(); // Check on mount
 
-        // Verificar Licença
         const checkLicense = async () => {
             try {
                 const info = await licenseService.getStatus();
@@ -158,6 +157,9 @@ const Admin = ({ onNavigate }) => {
             }
         };
         checkLicense();
+
+        // [TURBO LOAD] Carregar dados iniciais (pedidos, produtos, etc)
+        loadData();
 
         return () => window.removeEventListener('hashchange', handleHashChange);
     }, []);
@@ -482,7 +484,7 @@ const Admin = ({ onNavigate }) => {
                     </div>
                 );
             case 'categories':
-                return <CategoriesManager />;
+                return <CategoriesManager categories={categories} onRefresh={() => loadData(true)} />;
             case 'style-advisor': return <StylesManagement products={products} />;
             case 'business-intelligence': return <BusinessIntelligence />;
             case 'customer-intelligence': return <CustomerIntelligence />;
