@@ -161,8 +161,8 @@ export const apiFetch = async (endpoint, options = {}, resilienceOptions = {}) =
         
         try {
             if (!cachedToken || (now - lastTokenFetch > TOKEN_CACHE_MS)) {
-                // Timeout relâmpago (3s) para o token: se o Auth travar, a API não trava junto
-                const tokenTimeout = new Promise(r => setTimeout(r, 3000));
+                // Timeout relâmpago (8s) para o token: se o Auth travar, a API não trava junto
+                const tokenTimeout = new Promise(r => setTimeout(r, 8000));
                 const sessionPromise = supabase.auth.getSession();
                 
                 const raceResult = await Promise.race([sessionPromise, tokenTimeout]);

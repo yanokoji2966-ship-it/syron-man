@@ -205,8 +205,14 @@ export function restrictIfExpired(req, res, next) {
     }
     
     if (!licenseStatus.valid && licenseStatus.message !== 'Sistema não inicializado') {
+        // Developer Bypass: Se for localhost, a gente loga o erro mas deixa passar para não travar o desenvolvimento
+        if (currentHost === 'localhost' || currentHost === '127.0.0.1') {
+            console.warn('⚠️ BYPASS ATIVADO: Assinatura inválida detectada, mas permitida em localhost.');
+            return next();
+        }
+
         return res.status(403).json({ 
-            error: 'Ação indisponível.',
+            error: 'Ação indisponível.', 
             details: 'Assinatura do sistema inválida.',
             licenseStatus: 'invalid'
         });
