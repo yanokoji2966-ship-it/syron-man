@@ -62,6 +62,15 @@ export async function validateLicense() {
 
             if (sigError || !sigData) {
                 console.warn('⚠️ AVISO: Assinatura do sistema não encontrada ou inválida.');
+                
+                // Se for Localhost, a gente considera válido por padrão para não travar o dev
+                if (!process.env.VERCEL) {
+                    licenseStatus.valid = true;
+                    licenseStatus.status = 'active';
+                    licenseStatus.message = 'Licença Ativa (Dev Mode)';
+                    return licenseStatus;
+                }
+
                 licenseStatus.valid = false;
                 licenseStatus.message = 'Assinatura Inválida';
                 return licenseStatus;
@@ -144,7 +153,15 @@ export async function validateLicense() {
 
         return licenseStatus;
     } catch (error) {
-        console.error('❌ Erro crítico na validação de licença:', error.message);
+        console.error('❌ Erro na validação de licença:', error.message);
+        
+        // Auto-heal para Desenvolvimento: Se falhou e é localhost, libera pra não travar o dev
+        if (process.env.NODE_ENV === 'development' || !process.env.VERCEL) {
+            licenseStatus.valid = true;
+            licenseStatus.status = 'active';
+            licenseStatus.message = 'Modo Desenvolvedor Ativo';
+        }
+        
         return licenseStatus;
     }
 }

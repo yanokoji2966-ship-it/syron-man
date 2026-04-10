@@ -15,8 +15,12 @@ const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-    console.warn('⚠️ Backend Warning: Supabase URL or Key missing in process.env. Check your .env file.');
+    console.error('❌ CRITICAL ERROR: Supabase URL or Key missing in process.env. Deployment will fail.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(
+    supabaseUrl || 'https://placeholder.supabase.co', 
+    supabaseKey || 'placeholder'
+);
+
 

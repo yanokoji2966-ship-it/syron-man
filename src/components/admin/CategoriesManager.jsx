@@ -9,6 +9,7 @@ const CategoriesManager = ({ categories: initialCategories = [], onRefresh }) =>
     const [updating, setUpdating] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingCategory, setEditingCategory] = useState(null);
+    const [form, setForm] = useState({ name: '', active: true, order_position: 1 });
     const { showToast } = useToast();
 
     // Sincroniza com as categorias do Admin se fornecidas
