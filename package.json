@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "node --env-file=.env server_core/index.js",
+    "server": "node server_core/index.js",
     "preview": "vite preview",
     "start": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "vite build",
