@@ -48,6 +48,8 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- 4. RPC: get_admin_orders_v1 (Visualização de Pedidos)
+DROP FUNCTION IF EXISTS public.get_admin_orders_v1();
+
 CREATE OR REPLACE FUNCTION get_admin_orders_v1()
 RETURNS TABLE (
     id UUID,
