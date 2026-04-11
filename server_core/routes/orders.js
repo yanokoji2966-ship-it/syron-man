@@ -1,16 +1,51 @@
 import express from 'express';
 import { supabase } from '../supabase.js';
 import { restrictIfExpired } from '../services/licenseService.js';
+import { createClient } from '@supabase/supabase-js';
 
 const router = express.Router();
 
-// Listar pedidos (Dashboard Admin)
+// Função auxiliar para inicializar Supabase com o token do usuário logado (passando no RLS)
+const getAuthClient = (req) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        return createClient(process.env.VITE_SUPABASE_URL, process.env.VITE_SUPABASE_ANON_KEY, {
+            global: { headers: { Authorization: authHeader } }
+        });
+    }
+    return supabase;
+};
+
+// Listar pedidos (Dashboard Admin) - Convertido para Query direta para fugir do cache de RPC da Vercel/Supabase
 router.get('/', restrictIfExpired, async (req, res) => {
     try {
-        const { data, error } = await supabase.rpc('get_admin_orders_v1');
+        const client = getAuthClient(req);
+        const { data, error } = await client
+            .from('orders')
+            .select(`
+                *,
+                order_items ( id )
+            `)
+            .order('created_at', { ascending: false });
+
         if (error) throw error;
-        res.json(data);
+
+        // Formata para a estrutura exata que o frontend sempre esperou
+        const formattedData = (data || []).map(o => ({
+            id: o.id,
+            order_number: o.order_number,
+            customer_name: o.customer_name,
+            customer_email: o.customer_email,
+            total: o.total,
+            order_status: o.order_status,
+            payment_status: o.payment_status,
+            created_at: o.created_at,
+            item_count: o.order_items ? o.order_items.length : 0
+        }));
+
+        res.json(formattedData);
     } catch (error) {
+        console.error('API Error (Admin Orders):', error);
         res.status(500).json({ error: error.message });
     }
 });
@@ -25,8 +60,9 @@ router.get('/my-orders', async (req, res) => {
         }
 
         console.log(`[Backend] Buscando pedidos para: ${email || user_id}`);
+        const client = getAuthClient(req);
 
-        let query = supabase
+        let query = client
             .from('orders')
             .select(`
                 *,
